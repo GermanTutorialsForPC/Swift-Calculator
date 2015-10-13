@@ -158,6 +158,8 @@
 		6B45E6C4193DE45300263C1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "André Ohlrogge";
 				TargetAttributes = {
