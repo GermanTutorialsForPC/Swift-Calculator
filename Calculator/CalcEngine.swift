@@ -5,18 +5,18 @@ class CalcEngine {
     let π = 3.1415
     
     func calc(statment: String) -> Double {
-        var numbers = Double[]()
-        var operators = String[]()
+        var numbers = [Double]()
+        var operators = [String]()
         
         var cache: String = ""
-        for calcChar in statment {
+        for calcChar in statment.characters {
             if(calcChar != "+" && calcChar != "-") {
-                let currentCalcChar = "" + calcChar
-                let currentNumber = currentCalcChar.toInt()
-                if(currentNumber) {
+                let currentCalcChar = String("") + String(calcChar)
+                let currentNumber = Int(currentCalcChar)
+                if((currentNumber) != nil) {
                     cache += currentCalcChar
                 } else {
-                    numbers.append(Double(cache.toInt()!))
+                    numbers.append(Double(Int(cache)!))
                     cache = ""
                     operators.append(currentCalcChar)
                 }
@@ -24,21 +24,21 @@ class CalcEngine {
                 if(cache == "") {
                     cache += "\(calcChar)"
                 } else {
-                    numbers.append(Double(cache.toInt()!))
+                    numbers.append(Double(Int(cache)!))
                     cache = ""
                     operators.append("\(calcChar)")
                 }
             }
         }
         
-        numbers.append(Double(cache.toInt()!))
+        numbers.append(Double(Int(cache)!))
         
         //Berechnung
         while(!operators.isEmpty) {
             var findOp = false
             
             //Modolo
-            for(index, value) in enumerate(operators) {
+            for(index, value) in operators.enumerate() {
                 if(value == "%") {
                     if(index < numbers.count - 1) {
                         var result = numbers[index]%numbers[index+1]
@@ -55,7 +55,7 @@ class CalcEngine {
             }
             
             //Multi/Divi
-            for(index, value) in enumerate(operators) {
+            for(index, value) in operators.enumerate() {
                 if(value == "*") {
                     if(index < numbers.count - 1) {
                         var result = numbers[index]*numbers[index+1]
@@ -81,7 +81,7 @@ class CalcEngine {
             }
             
             //Add/Sub
-            for(index, value) in enumerate(operators) {
+            for(index, value) in operators.enumerate() {
                 if(value == "+") {
                     if(index < numbers.count - 1) {
                         var result = numbers[index]+numbers[index+1]
@@ -115,7 +115,7 @@ class CalcEngine {
             return -1
         }
         
-        var modolo: Int = v1 % v2
+        let modolo: Int = v1 % v2
         if(modolo == 0) {
             return v2
         }

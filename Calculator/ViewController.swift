@@ -9,7 +9,7 @@ class ViewController: UIViewController {
     var ggtV1 = 0;
     var ggtV2 = 0;
     
-    @IBOutlet var lable : UILabel
+    @IBOutlet var lable : UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     }
     
     func setzteLable() {
-        lable.text = eingabe
+        lable!.text = eingabe
     }
 
     @IBAction func loeschenBtn(sender : AnyObject) {
@@ -113,7 +113,7 @@ class ViewController: UIViewController {
     
     @IBAction func gleichEingabeBtn(sender : AnyObject) {
         if(ggT) {
-            ggtV2 = eingabe.toInt()!;
+            ggtV2 = Int(eingabe)!;
             eingabe = "\(calcEngine.ggt(ggtV1, v2: ggtV2))"
         } else {
             eingabe = "\(calcEngine.calc(eingabe))"
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
     
     @IBAction func ggTEingabeBtn(sender : AnyObject) {
         ggT=true
-        ggtV1 = eingabe.toInt()!;
+        ggtV1 = Int(eingabe)!;
         eingabe = ""
         setzteLable()
     }
